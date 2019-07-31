@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/bootstrap.min.css">      
+        <link rel="stylesheet" href="css/cybersuggest.css"> 
+    </head>
+
+     
+
+    <body>
+
+        <br>
+        <br>
+
+        <div class="navBar" id="navBarWelcome" style="visibility: visible">
+            <header class="fixed-top">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" onclick="showWelcomePage();">CybeR&DP</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link" onclick="openSignupPage();">SignUp</a>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </div>
+
+        <div class="navBar" id="navBarHome" style="visibility: hidden">
+            <header class="fixed-top">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" onclick="showHomePage();">CybeR&DP</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav" id="navBarChoicesHome">
+                            <a class="nav-item nav-link active" onclick="showHomePage();">Home</a>
+                            <a class="nav-item nav-link active" onclick="logout();">Logout</a>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="container page login-page" id="welcomePage" style="visibility:visible;position:absolute; left:calc(20%);">
+            <div class="container title-container">
+                <h1 class="page-title">Welcome</h1>
+            </div>
+
+            <br><br><br>
+
+            <div class="container">
+                <form id="loginForm" autocomplete="off">
+                    <label for="username">Username:</label>
+                    <br>
+                    <input type="text" name="userName" autocomplete="off">
+                    <br>
+                    <br>
+
+                    <label for="password">Password:</label>
+                    <br>
+                    <input type="password" name="password">
+                    <br>
+                    <br>
+                    <br>
+                    <button type="submit" id="loginBtn" class="btn btn-outline-dark" onclick="login()">Login</button>
+                </form>                
+                <br>
+                <button type="submit" id="signupBtn" class="btn btn-outline-dark" onclick="openSignupPage()">Don't have an account?</button>
+            </div>
+        </div>
+
+
+        <div class="container page" id="signupPage" style="visibility:hidden;position:absolute">
+
+            <div class="container title-container">
+                <h1 class="page-title">SignUp</h1>
+            </div>
+
+            <form id="signupForm" autocomplete="off">
+                <div class="form-group">
+
+                    <label for="name">Name:</label>
+                    <br>
+                    <input id="name" autocomplete="off" type="text" name="name">
+                    <br>
+                    <br>
+
+                    <label for="surname">Surname:</label>
+                    <br>
+                    <input id="surname" type="text" name="surname">
+                    <br>
+                    <br>
+
+                    <label for="userName">Username:</label>
+                    <br>
+                    <input id="userName" type="text" name="userName">
+                    <br>
+                    <br>
+
+                    <label for="email">E-mail:</label>
+                    <br>
+                    <input id ="email" type="text" name="email">
+                    <br>
+                    <br>
+
+                    <label for="password">Password:</label>
+                    <br>
+                    <input id="password" type="password" name="password">
+                    <br>
+                    <br>
+
+                    <!--
+                    <label for="userType">User Type:</label>
+                    <br>
+                    <input id="admin" type="radio" name="userType" value="admin" > Admin<br>
+                    <input id="manager" type="radio" name="userType" value="manager" > Manager<br>
+                    <input id="standart" type="radio" name="userType" value="standart" checked > Standart<br>
+                    
+                    <br>
+                    -->
+
+                </div>idePages();
+
+
+                <button type="submit" class="btn btn-outline-dark" onclick="sendSignupData();">Submit</button>
+                <!--<input type="submit" value="Submit">
+                -->
+            </form>
+        </div>
+
+
+        <div class="container page" id="homePage" style="visibility:hidden;position:absolute;left:calc(20%);">
+            <div class="container title-container">
+                <h1 class="page-title">Home</h1>
+            </div>
+
+            <br>
+            <br>
+            <div class="container">
+                <button type="submit" id="addSuggestionBtn" class="btn btn-outline-dark" onclick="openAddSuggestionPage()">Add Proposal</button>
+            </div>
+            <br><br>
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">
+                        <h4>R&D Proposals</h4>
+                    </div>
+                    <div class="col-10">
+                        <form id="searchForm" autocomplete="off">
+                            <input id="filter" type="text" name="filter" placeholder="Search for proposals...">
+                            <button type="submit" class="btn btn-outline-dark btn-search" onclick="fetchSuggestions(document.getElementById('filter').value);"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>           
+                    </div>
+
+                </div>
+
+
+                <br>
+            </div>
+
+            <div class="container suggestions" id="suggestionCards">
+                <!-- FETCH THE SUGGESTIONS!!-->
+            </div>
+        
+        </div>
+        
+        <div class ="container page" id ="adminConsolePage" style="visibility:hidden;position:absolute;left:calc(20%);">
+            <div class="container title-container">
+                <h2 class="page-title">Admin Console</h2>
+            </div>
+            
+            <!-- Fetch the members -->
+            <div class="card-columns" id="memberCards">
+                
+            </div>
+            
+            
+        </div>
+
+        <div class="container page" id= "addSuggestionPage" style="visibility:hidden;position:absolute;left:calc(20%);">
+            <h1>Add Proposal</h1><br><br>
+            <form id="addSuggestionForm" autocomplete="off">
+
+
+                <label for="suggestion-title">Proposal Title:</label>
+                <br>
+                <input type="text" name="suggestionTitle">
+                <br>
+                <br>
+
+                <label for="suggestionText"> Proposal</label>
+                <br>
+                <textarea class="form-control" id="suggestionText" name="suggestionText" rows="8"></textarea>
+                <br>
+                <br>
+
+
+            </form>
+
+            <form id="fileUploadForm" autocomplete="off" action="UploadFileServlet" method="POST" enctype="multipart/form-data" target="result">
+                Attachment:
+                <br>
+                <input class="btn-file-upload" type="file" name="fileUpload" id="fileUpload"><br><br>
+                <br>
+
+                <input id="tokenId" type="hidden" name="token" >
+                <input id="suggId" type="hidden" name="suggId" >
+
+            </form>
+
+            <input class="btn btn-outline-dark" type="submit" value="Submit" onclick="sendSuggestionData()">  
+
+            <div class="container">
+                <iframe name="result" width="200" height="100" frameBorder="0"></iframe>
+            </div>
+        </div>
+
+
+
+
+        <script src="js/handler.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    </body>
+
+</html>

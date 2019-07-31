@@ -1,0 +1,4 @@
+deploy postgresql-42.2.5.jar --name=postgresql
+data-source add --name=deniz-postgres --jndi-name=java:/NewSuggestionDS --driver-name=postgresql --connection-url=jdbc:postgresql://dbserver:5432/suggestionNewPostgres --user-name=postgres --password=12386432
+/subsystem=undertow/server=default-server/http-listener=default/:write-attribute(name=max-post-size,value=41943040)
+exit

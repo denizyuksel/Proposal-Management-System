@@ -1,0 +1,10 @@
+tr/net/deniz/UploadFileServlet.class
+tr/net/deniz/Member_.class
+tr/net/deniz/Member.class
+tr/net/deniz/DownloadFileServlet.class
+tr/net/deniz/Suggestion_.class
+tr/net/deniz/Suggestion.class
+tr/net/deniz/FileInstance.class
+tr/net/deniz/FileInstance_.class
+tr/net/deniz/JaxRsActivator.class
+tr/net/deniz/SuggestionService.class
